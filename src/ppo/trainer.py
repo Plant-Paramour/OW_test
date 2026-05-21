@@ -117,7 +117,8 @@ class Trainer:
             return
 
         from ..opponents import (SniperOpponent, HeuristicOpponent,
-                                  LB1200Opponent, V4HybridOpponent)
+                                  LB1200Opponent, V4HybridOpponent,
+                                  SearchOpponent)
 
         def _build_one(opp_type):
             if opp_type == "random":
@@ -130,6 +131,8 @@ class Trainer:
                 return LB1200Opponent()
             if opp_type == "v4_hybrid":
                 return V4HybridOpponent()
+            if opp_type == "search":
+                return SearchOpponent()
             print(f"警告: 未知对手类型 '{opp_type}'，使用 random")
             return "random"
 

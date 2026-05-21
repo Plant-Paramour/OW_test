@@ -14,7 +14,7 @@ from dataclasses import dataclass
 from ..engine.physics import travel_time
 from ..engine.interception import aim_at, check_path_blocked
 from .simulator import simulate_fleet_launch, find_min_ships_to_capture
-from .valuation import compute_action_value
+from .valuation import compute_action_value, value_of_capture
 
 SEARCH_MIN_SHIPS = 5
 
@@ -34,11 +34,13 @@ class ScoredAction:
     is_enemy: bool
 
 
-def _try_ship_amounts(src, tgt, ship_amounts, state, ledger, timelines):
+def _try_ship_amounts(src, tgt, ship_amounts, state, ledger, timelines,
+                      delays=None):
     """对给定的舰船数量列表逐一模拟，返回最佳结果。
 
     Args:
         ship_amounts: 要尝试的舰船数列表 (去重排序)
+        delays: {ships: wait_turns} 映射，表示该舰船数需要攒几回合
         state, ledger, timelines: 世界模型状态
 
     Returns:
@@ -57,10 +59,23 @@ def _try_ship_amounts(src, tgt, ship_amounts, state, ledger, timelines):
         if outcome.aim is None:
             continue
 
-        value = compute_action_value(
-            outcome, tgt, state.player, state.remaining_steps,
-            ships, state.comet_ids,
-        )
+        delay = (delays or {}).get(ships, 0)
+
+        if delay > 0 and outcome.capture_turn is not None:
+            adj_capture = outcome.capture_turn + delay
+            adj_hold = outcome.hold_until + delay
+            is_enemy = tgt.owner not in (-1, state.player)
+            value = value_of_capture(
+                tgt, adj_capture, adj_hold,
+                state.remaining_steps, ships, is_enemy,
+                source_at_risk=outcome.source_at_risk,
+            )
+        else:
+            value = compute_action_value(
+                outcome, tgt, state.player, state.remaining_steps,
+                ships, state.comet_ids,
+            )
+
         if value > best_value:
             best_value = value
             best_ships = ships
@@ -108,6 +123,17 @@ def _evaluate_candidate(src, tgt, available, state, ledger, timelines):
         # 无法占领 → 仍尝试最大可用（可能用于削弱敌方）
         candidates = [cap_available]
 
+    # 攒兵前瞻: 尝试等待 1~5 回合积累更多舰船后发射
+    # 更多船 = 更快速度, 等待 + 快速飞行可能比立刻慢飞更早到达
+    delays = {}
+    src_prod = src.production
+    if src_prod > 0:
+        for wait in range(1, 6):
+            future_ships = available + wait * src_prod
+            if future_ships > cap_available:
+                candidates.append(future_ships)
+                delays[future_ships] = wait
+
     # 去重 + 排序
     candidates = sorted(set(c for c in candidates if c >= SEARCH_MIN_SHIPS))
 
@@ -116,7 +142,7 @@ def _evaluate_candidate(src, tgt, available, state, ledger, timelines):
 
     # Step 3: 逐一模拟
     best_value, best_ships, best_outcome = _try_ship_amounts(
-        src, tgt, candidates, state, ledger, timelines,
+        src, tgt, candidates, state, ledger, timelines, delays,
     )
 
     if best_ships is None:

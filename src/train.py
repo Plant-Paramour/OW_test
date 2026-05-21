@@ -18,7 +18,7 @@ import torch
 
 from src.policy.model import PolicyNetwork
 from src.ppo.trainer import Trainer
-from src.opponents import SniperOpponent, HeuristicOpponent, OpponentPool, LB1200Opponent, V4HybridOpponent
+from src.opponents import SniperOpponent, HeuristicOpponent, OpponentPool, LB1200Opponent, V4HybridOpponent, SearchOpponent
 
 
 DEFAULT_CONFIG = {
@@ -69,6 +69,8 @@ def _build_single_opponent(opp_type: str):
         return LB1200Opponent()
     elif opp_type == "v4_hybrid":
         return V4HybridOpponent()
+    elif opp_type == "search":
+        return SearchOpponent()
     else:
         print(f"警告: 未知对手类型 '{opp_type}'，使用默认 random 对手")
         return "random"

@@ -7,6 +7,7 @@ from .pool import OpponentPool
 from .self_play import SelfPlayOpponent
 from .lb1200 import LB1200Opponent
 from .v4_hybrid import V4HybridOpponent
+from .search_opponent import SearchOpponent
 
 __all__ = [
     "Opponent",
@@ -17,4 +18,5 @@ __all__ = [
     "SelfPlayOpponent",
     "LB1200Opponent",
     "V4HybridOpponent",
+    "SearchOpponent",
 ]
