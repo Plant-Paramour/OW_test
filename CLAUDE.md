@@ -26,25 +26,46 @@ $PY "$BASE\scripts\verify_search.py"      # 44 tests — 动作搜索
 
 ## 训练 & 工具
 
+**所有训练命令必须在项目根目录执行** (`C:\code\[kaggle]\Orbit Wars`)，因为 checkpoint 使用相对路径保存。
+
 ```bash
 # 训练入口 (默认开启搜索引导 alpha=0.05)
 $PY "$BASE\src\train.py"
 
-# Phase 0: 早期发育 (50 回合截断, PV 终局奖励)
-$PY "$BASE\src\train.py" --config configs/curriculum_phase0_early.yaml
+# Phase 0: 早期发育 (50 回合截断, 分阶段对手 sniper→v4_hybrid)
+$PY "$BASE\src\train.py" --config "$BASE\configs\curriculum_phase0_early.yaml" --resume "$BASE\artifacts\bc_sniper_policy.pt"
 
 # Phase 1-3: 完整课程训练
-$PY "$BASE\src\train.py" --config configs/curriculum_phase1.yaml
-$PY "$BASE\src\train.py" --config configs/curriculum_phase2.yaml --resume checkpoint_500.pt
-$PY "$BASE\src\train.py" --config configs/curriculum_phase3.yaml --resume checkpoint_1500.pt
+$PY "$BASE\src\train.py" --config "$BASE\configs\curriculum_phase1.yaml"
+$PY "$BASE\src\train.py" --config "$BASE\configs\curriculum_phase2.yaml" --resume checkpoint_500.pt
+$PY "$BASE\src\train.py" --config "$BASE\configs\curriculum_phase3.yaml" --resume checkpoint_1500.pt
+
+# 搜索算法独立验证 (搜索 vs Sniper, 不依赖神经网络)
+$PY "$BASE\scripts\verify_search_vs_sniper.py"
 
 # 生成回放
 $PY "$BASE\scripts\gen_replays.py" -n 10 --opponent random --ckpt checkpoint_500.pt
 
-# BC 预训练 (Sniper -> 策略网络)
-$PY "$BASE\scripts\bc_sniper.py" --demo-games 200 --epochs 50 --validate
+# BC 预训练
+$PY "$BASE\scripts\bc_sniper.py" --demo-games 200 --epochs 50 --validate  # Sniper → 策略网络
+$PY "$BASE\scripts\bc_v4_hybrid.py" --demo-games 200 --epochs 50 --validate  # v4_hybrid → 策略网络
 
 # 回放查看器: 浏览器打开 replays/viewer.html
+```
+
+### 训练输出 & 路径
+
+| 产物 | 路径 | 说明 |
+|------|------|------|
+| Checkpoint | `$BASE\checkpoint_{update}.pt` | 每 100 次 update 保存，相对路径 = 项目根 |
+| BC 预训练权重 | `$BASE\artifacts\bc_sniper_policy.pt`, `bc_v4_policy.pt` | BC 模仿学习产物 |
+| 回放文件 | `$BASE\replays\*.json` | gen_replays.py 生成 |
+| 训练日志 | `$BASE\training_logs\` | 建议 stdout 重定向到此目录 |
+
+**训练 stdout 重定向示例：**
+```bash
+mkdir -p "$BASE\training_logs"
+$PY "$BASE\src\train.py" --config ... 2>&1 | tee "$BASE\training_logs\phase0_$(date +%Y%m%d_%H%M%S).log"
 ```
 
 ## 架构
@@ -83,9 +104,12 @@ src/ppo/           PPO 训练 (Phase 6, 64/64 tests)
   update.py          PPO 更新 (混合离散+连续, masked_mean)
   trainer.py         训练循环 + comet EMA + 搜索 alpha 退火调度
 
-src/opponents/     课程对手 (Phase 7, 43/43 tests)
+src/opponents/     课程对手 (Phase 7, 44/44 tests)
+  base.py            对手接口定义 (OpponentLike: str | callable | OpponentPool)
   sniper.py          最近行星狙击手
   heuristic.py       完整战术启发式
+  lb1200.py          Kaggle LB 1200分 规则对手
+  v4_hybrid.py       V4 混合对手 (搜索 + 启发式后备)
   pool.py            加权随机对手池
   self_play.py       SelfPlay 封装 PolicyNetwork
 
@@ -103,9 +127,12 @@ src/search/        动作搜索 (Phase 9, 44/44 tests)
 - **彗星 warmup**: 自适应探索引导, PBRS 证明不扭曲最优策略
 - **浮点 ETA 瞄准**: estimate_arrival_float() + 位置插值 + 50 次迭代, 消除远距离偏差
 - **搜索 Logit Bias**: 搜索算法评估每个候选的占领价值, 作为偏置加入策略 logits
-  - `augmented_logits = target_logits + search_alpha * search_value`
-  - 初期 alpha=0.05~0.08 引导探索, 逐步退火至 0.005, 最终关闭
+  - `augmented_logits = target_logits + search_alpha * search_value` 用于动作采样
+  - `target_log_prob` 从 raw_logits 计算（保证 PPO importance sampling ratio 正确）
+  - 初期 alpha=0.05~0.15 引导探索, 逐步退火至 0.01, 最终关闭
   - 配置: configs/*.yaml 中的 `search` 段
+- **分阶段对手课程**: staged 对手配置，每 eval_interval 次 update 评估胜率 (Φ>0)，
+  胜率 ≥ win_threshold 自动晋级下一阶段对手 (src/ppo/trainer.py:153-196)
 
 ## 数据流
 
@@ -141,7 +168,7 @@ src/search/        动作搜索 (Phase 9, 44/44 tests)
 
 | Phase | 配置 | Updates | 回合 | 对手 | 搜索 α |
 |-------|------|---------|------|------|--------|
-| 0 早期发育 | `curriculum_phase0_early.yaml` | 500 | 50 | Random | 0.15 |
+| 0 早期发育 | `curriculum_phase0_early.yaml` | 500 | 50 | staged: sniper→v4_hybrid | 0.15 |
 | 1 热身 | `curriculum_phase1.yaml` | 500 | 500 | Random | 0.08 |
 | 2 基础对抗 | `curriculum_phase2.yaml` | 1000 | 500 | Random(40%)+Sniper(60%) | 0.03 |
 | 3 战术对抗 | `curriculum_phase3.yaml` | 1500 | 500 | Sniper(40%)+Heuristic(60%) | 0.0 |
@@ -150,7 +177,16 @@ src/search/        动作搜索 (Phase 9, 44/44 tests)
 - 50 回合截断对局，终局奖励 = `clip(scale × Φ, ±15)` where `scale=3.0`
 - Φ = 对称势能函数 (my_PV − enemy_PV)，综合评估已有舰队 + 飞行舰队 + 行星产能
 - 目标：让智能体在前期 0-50 回合学会疯狂扩张，不顾后期战术
+- 分阶段对手：先 vs Sniper，每 50 updates 评估 100 局，胜率 ≥ 90% 自动晋级 vs V4Hybrid
+- 评估使用确定性策略 + 关闭搜索引导 (search_alpha=0)
+- 胜 = 50 回合结束时 Φ > 0（终局资产 > 敌方）
 - 回合结束后自动 hot-start 到 Phase 1 完整对局
+
+**PPO + 搜索集成设计 (重要修复 2026-05-21)：**
+- `augmented_logits = raw_logits + search_alpha * search_value`
+- 动作从 augmented_logits 采样（受搜索引导）
+- **`target_log_prob` 从 raw_logits 计算**（PPO 更新用 raw logits 算 new_lp）
+- 原因：若 t_lp 也从 augmented 算，PPO ratio `exp(new_lp - old_lp)` 对比的是不同分布，梯度系统性错误
 
 **搜索值归一化：**
 - 搜索原始值量级数千（productive_turns × prod × swing），不适合直接当 logit bias

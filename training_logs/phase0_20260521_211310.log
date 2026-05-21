@@ -1,0 +1,381 @@
+OpenSpiel exception: Unknown game 'universal_poker'. Available games are:
+2048
+add_noise
+amazons
+amazons_proxy
+antichess
+backgammon
+banqi
+bargaining
+battleship
+blackjack
+blotto
+breakthrough
+bridge
+bridge_uncontested_bidding
+cached_tree
+catch
+chat_game
+checkers
+chess
+chinese_checkers
+cliff_walking
+clobber
+clobber_proxy
+coin_game
+coin_game_proxy
+colored_trails
+connect_four
+connect_four_proxy
+coop_box_pushing
+coop_to_1p
+coordinated_mp
+crazy_eights
+crazyhouse
+cribbage
+cursor_go
+dark_chess
+dark_hex
+dark_hex_ir
+dark_hex_proxy
+deep_sea
+dots_and_boxes
+dou_dizhu
+efg_game
+einstein_wurfelt_nicht
+euchre
+first_sealed_auction
+gin_rummy
+gin_rummy_proxy
+go
+go_proxy
+gomoku
+goofspiel
+havannah
+hearts
+hex
+hive
+kriegspiel
+kuhn_poker
+laser_tag
+latent_ttt
+leduc_poker
+lewis_signaling
+liars_dice
+liars_dice_ir
+lines_of_action
+lines_of_action_proxy
+maedn
+mancala
+markov_soccer
+matching_pennies_3p
+matrix_bos
+matrix_brps
+matrix_cd
+matrix_coordination
+matrix_mp
+matrix_pd
+matrix_rps
+matrix_rpsw
+matrix_sh
+matrix_shapleys_game
+mfg_crowd_modelling
+mfg_crowd_modelling_2d
+mfg_dynamic_routing
+mfg_garnet
+misere
+mnk
+morpion_solitaire
+negotiation
+nfg_game
+nim
+nine_mens_morris
+normal_form_extensive_game
+oh_hell
+oshi_zumo
+oshi_zumo_proxy
+othello
+oware
+pathfinding
+pentago
+phantom_go
+phantom_ttt
+phantom_ttt_ir
+pig
+python_ant_foraging
+python_block_dominoes
+python_dynamic_routing
+python_hangman
+python_iterated_prisoners_dilemma
+python_kuhn_poker
+python_liars_poker
+python_pokerkit_wrapper
+python_pokerkit_wrapper_acpc_style
+python_repeated_pokerkit
+python_team_dominoes
+python_tic_tac_toe
+quoridor
+rbc
+repeated_game
+repeated_leduc_poker
+restricted_nash_response
+sheriff
+shogi
+skat
+snake
+solitaire
+spades
+start_at
+stones_and_gems
+tarok
+tic_tac_toe
+tiny_bridge_2p
+tiny_bridge_4p
+tiny_hanabi
+trade_comm
+turn_based_simultaneous_game
+twixt
+ultimate_tic_tac_toe
+xiangqi
+y
+y_proxy
+yacht
+zerosum
+OpenSpiel exception: Unknown game 'repeated_poker'. Available games are:
+2048
+add_noise
+amazons
+amazons_proxy
+antichess
+backgammon
+banqi
+bargaining
+battleship
+blackjack
+blotto
+breakthrough
+bridge
+bridge_uncontested_bidding
+cached_tree
+catch
+chat_game
+checkers
+chess
+chinese_checkers
+cliff_walking
+clobber
+clobber_proxy
+coin_game
+coin_game_proxy
+colored_trails
+connect_four
+connect_four_proxy
+coop_box_pushing
+coop_to_1p
+coordinated_mp
+crazy_eights
+crazyhouse
+cribbage
+cursor_go
+dark_chess
+dark_hex
+dark_hex_ir
+dark_hex_proxy
+deep_sea
+dots_and_boxes
+dou_dizhu
+efg_game
+einstein_wurfelt_nicht
+euchre
+first_sealed_auction
+gin_rummy
+gin_rummy_proxy
+go
+go_proxy
+gomoku
+goofspiel
+havannah
+hearts
+hex
+hive
+kriegspiel
+kuhn_poker
+laser_tag
+latent_ttt
+leduc_poker
+lewis_signaling
+liars_dice
+liars_dice_ir
+lines_of_action
+lines_of_action_proxy
+maedn
+mancala
+markov_soccer
+matching_pennies_3p
+matrix_bos
+matrix_brps
+matrix_cd
+matrix_coordination
+matrix_mp
+matrix_pd
+matrix_rps
+matrix_rpsw
+matrix_sh
+matrix_shapleys_game
+mfg_crowd_modelling
+mfg_crowd_modelling_2d
+mfg_dynamic_routing
+mfg_garnet
+misere
+mnk
+morpion_solitaire
+negotiation
+nfg_game
+nim
+nine_mens_morris
+normal_form_extensive_game
+oh_hell
+oshi_zumo
+oshi_zumo_proxy
+othello
+oware
+pathfinding
+pentago
+phantom_go
+phantom_ttt
+phantom_ttt_ir
+pig
+python_ant_foraging
+python_block_dominoes
+python_dynamic_routing
+python_hangman
+python_iterated_prisoners_dilemma
+python_kuhn_poker
+python_liars_poker
+python_pokerkit_wrapper
+python_pokerkit_wrapper_acpc_style
+python_repeated_pokerkit
+python_team_dominoes
+python_tic_tac_toe
+quoridor
+rbc
+repeated_game
+repeated_leduc_poker
+restricted_nash_response
+sheriff
+shogi
+skat
+snake
+solitaire
+spades
+start_at
+stones_and_gems
+tarok
+tic_tac_toe
+tiny_bridge_2p
+tiny_bridge_4p
+tiny_hanabi
+trade_comm
+turn_based_simultaneous_game
+twixt
+ultimate_tic_tac_toe
+xiangqi
+y
+y_proxy
+yacht
+zerosum
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO: Successfully loaded OpenSpiel environments: 21.
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_amazons
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_backgammon
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_checkers
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_chess
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_clobber
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_coin_game
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_connect_four
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_dark_hex
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_gin_rummy
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_go
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_goofspiel
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_hearts
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_hex
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_lines_of_action
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_matching_pennies_3p
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_oshi_zumo
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_othello
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_repeated_game
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_tic_tac_toe
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_y
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_python_repeated_pokerkit
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO: OpenSpiel games skipped: 3.
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    snake
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    universal_poker(betting=nolimit,bettingAbstraction=fullgame,blind=2 1,firstPlayer=2 1 1 1,numBoardCards=0 3 1 1,numHoleCards=2,numPlayers=2,numRanks=13,numRounds=4,numSuits=4,stack=200 200,calcOddsNumSims=1000000)
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    repeated_poker(max_num_hands=100,reset_stacks=True,rotate_dealer=True,universal_poker_game_string=universal_poker(betting=nolimit,bettingAbstraction=fullgame,blind=2 1,firstPlayer=2 1 1 1,numBoardCards=0 3 1 1,numHoleCards=2,numPlayers=2,numRanks=13,numRounds=4,numSuits=4,stack=200 200,calcOddsNumSims=1000000))
+配置:
+  [ppo]
+    rollout_steps: 128
+    total_updates: 500
+    epochs: 4
+    minibatch_size: 512
+    gamma: 0.99
+    gae_lambda: 0.95
+    clip_coef: 0.2
+    ent_coef: 0.01
+    vf_coef: 0.5
+    lr: 0.0003
+    max_grad_norm: 0.5
+  [model]
+    hidden_size: 256
+    candidate_count: 20
+  [env]
+    candidate_count: 20
+    episode_steps: 50
+  [opponent]
+    type: staged
+    stages: [{'type': 'sniper'}, {'type': 'v4_hybrid'}]
+    eval_interval: 50
+    eval_games: 100
+    win_threshold: 0.9
+  [search]
+    alpha: 0.15
+    alpha_decay: 0.999
+    alpha_min: 0.01
+  [terminal]
+    early_terminal_scale: 3.0
+
+策略参数量: 218,116
+从 C:/code/[kaggle]/Orbit Wars/artifacts/bc_sniper_policy.pt 恢复 (update N/A)
+对手: <src.opponents.sniper.SniperOpponent object at 0x000000003E2300E0>
+  分阶段对手: <src.opponents.sniper.SniperOpponent object at 0x0000000046F9FF20> → V4HybridOpponent()
+  评估: 每 50 updates 跑 100 局, 胜率 ≥ 90% 晋级
+开始训练: 500 updates, rollout_steps=128, lr=0.0003
+  搜索集成: alpha=0.1500, decay=0.9990, min=0.0100
+[   10/500] policy_loss=-0.0029 value_loss=0.0345 entropy=0.8355 reward=2.47 search_α=0.1485 elapsed=29s
+[   20/500] policy_loss=-0.0033 value_loss=0.0252 entropy=0.8393 reward=2.35 search_α=0.1470 elapsed=60s
+[   30/500] policy_loss=-0.0035 value_loss=0.0267 entropy=0.7313 reward=2.16 search_α=0.1456 elapsed=89s
+[   40/500] policy_loss=-0.0028 value_loss=0.0114 entropy=0.6038 reward=2.59 search_α=0.1441 elapsed=120s
+
+  [评估] update=50 阶段=1 对手=<src.opponents.sniper.SniperOpponent object at 0x0000000046F9FF20> 胜率=0.0% (0/100)
+[   50/500] policy_loss=-0.0026 value_loss=0.0149 entropy=0.3800 reward=2.18 search_α=0.1427 elapsed=221s
+[   60/500] policy_loss=-0.0015 value_loss=0.0236 entropy=0.3638 reward=2.02 search_α=0.1413 elapsed=253s
+[   70/500] policy_loss=-0.0016 value_loss=0.0190 entropy=0.3859 reward=2.69 search_α=0.1399 elapsed=287s
+[   80/500] policy_loss=-0.0011 value_loss=0.0071 entropy=0.3801 reward=2.78 search_α=0.1385 elapsed=319s
+[   90/500] policy_loss=-0.0011 value_loss=0.0052 entropy=0.3804 reward=2.48 search_α=0.1371 elapsed=352s
+
+  [评估] update=100 阶段=1 对手=<src.opponents.sniper.SniperOpponent object at 0x0000000046F9FF20> 胜率=0.0% (0/100)
+[  100/500] policy_loss=-0.0015 value_loss=0.0081 entropy=0.4333 reward=2.50 search_α=0.1357 elapsed=475s
+  checkpoint → checkpoint_100.pt
+[  110/500] policy_loss=-0.0015 value_loss=0.0107 entropy=0.4325 reward=3.12 search_α=0.1344 elapsed=517s
+[  120/500] policy_loss=-0.0013 value_loss=0.0060 entropy=0.3178 reward=3.28 search_α=0.1330 elapsed=555s
+[  130/500] policy_loss=-0.0026 value_loss=0.0050 entropy=0.2397 reward=3.51 search_α=0.1317 elapsed=595s
+[  140/500] policy_loss=-0.0021 value_loss=0.0065 entropy=0.2122 reward=2.79 search_α=0.1304 elapsed=630s
+
+  [评估] update=150 阶段=1 对手=<src.opponents.sniper.SniperOpponent object at 0x0000000046F9FF20> 胜率=0.0% (0/100)
+[  150/500] policy_loss=-0.0028 value_loss=0.0042 entropy=0.1298 reward=3.07 search_α=0.1291 elapsed=767s
+[  160/500] policy_loss=-0.0029 value_loss=0.0068 entropy=0.1916 reward=2.45 search_α=0.1278 elapsed=813s
+[  170/500] policy_loss=-0.0018 value_loss=0.0066 entropy=0.1102 reward=3.08 search_α=0.1265 elapsed=878s
+[  180/500] policy_loss=-0.0039 value_loss=0.0106 entropy=0.2376 reward=2.62 search_α=0.1253 elapsed=920s
+[  190/500] policy_loss=-0.0024 value_loss=0.0030 entropy=0.2528 reward=3.16 search_α=0.1240 elapsed=972s
+
+  [评估] update=200 阶段=1 对手=<src.opponents.sniper.SniperOpponent object at 0x0000000046F9FF20> 胜率=0.0% (0/100)
+[  200/500] policy_loss=-0.0041 value_loss=0.0042 entropy=0.1050 reward=2.69 search_α=0.1228 elapsed=1101s
+  checkpoint → checkpoint_200.pt

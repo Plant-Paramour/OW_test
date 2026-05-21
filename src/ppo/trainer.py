@@ -155,28 +155,77 @@ class Trainer:
 
         胜 = 50 回合结束时 Φ > 0（我方终局资产 > 敌方）。
         使用确定性策略，关闭搜索引导。
+        使用 env.run() 确保与 verify_search_vs_sniper.py 一致的评估语义。
         """
+        from kaggle_environments import make
+        from ..world.observation import parse_observation
+        from ..features.builder import build_decision_matrix
+        from ..policy.action_head import sample_action, compute_ships_to_send
+        from ..engine.interception import aim_at
         from ..env.reward import state_potential
+        import numpy as np
 
-        eval_env = OrbitWarsEnv(
-            opponent=self.current_opponent,
-            candidate_count=self.candidate_count,
-            episode_steps=self.episode_steps,
-        )
+        def _find_p(planets, pid):
+            for p in planets:
+                if p.id == pid:
+                    return p
+            return None
+
+        policy = self.policy
+        candidate_count = self.candidate_count
+        episode_steps = self.episode_steps
+        opponent = self.current_opponent
+
+        def _agent(obs, _cfg):
+            state = parse_observation(obs, episode_steps=episode_steps)
+            rows = build_decision_matrix(state, candidate_count=candidate_count)
+            if not rows:
+                return []
+            source_groups = {}
+            for row in rows:
+                source_groups.setdefault(row.source_id, []).append(row)
+            actions = []
+            for source_id, srows in source_groups.items():
+                self_t = torch.tensor(srows[0].self_feat, dtype=torch.float32)
+                cand_t = torch.tensor(
+                    np.stack([r.cand_feat for r in srows]), dtype=torch.float32)
+                global_t = torch.tensor(srows[0].global_feat, dtype=torch.float32)
+                mask_t = torch.tensor([r.mask for r in srows])
+                available = srows[0].action_info.get("available", 0)
+                with torch.no_grad():
+                    out = policy.forward(self_t, cand_t, global_t, mask=mask_t)
+                target_logits = out["target_logits"].clone()
+                idx, ratio, _, _ = sample_action(
+                    target_logits, out["ship_alpha"], out["ship_beta"],
+                    mask=mask_t, deterministic=True)
+                target_idx = idx.item()
+                if target_idx >= len(srows):
+                    continue
+                target_row = srows[target_idx]
+                if target_row.candidate_id == -1:
+                    continue
+                ships = compute_ships_to_send(available, ratio.item())
+                if ships == 0:
+                    continue
+                src = _find_p(state.planets, source_id)
+                tgt = _find_p(state.planets, target_row.candidate_id)
+                if src is None or tgt is None:
+                    continue
+                aim = aim_at(src, tgt, ships, state.initial_by_id,
+                            state.angular_velocity, state.comets, state.comet_ids)
+                if aim is None:
+                    continue
+                actions.append([source_id, aim[0], ships])
+            return actions
 
         wins = 0
         for _ in range(self.stage_eval_games):
-            state, _ = eval_env.reset()
-            while True:
-                decisions, _ = eval_env.collect_decisions(
-                    self.policy, state,
-                    deterministic=True,
-                    search_alpha=0.0,
-                )
-                state, _, _, done, _ = eval_env.step(decisions, state)
-                if done:
-                    break
-            phi = state_potential(state, self.env.player_id)
+            env = make("orbit_wars", debug=True,
+                       configuration={"episodeSteps": episode_steps})
+            env.run([_agent, opponent])
+            final_obs = env.steps[-1][0].observation
+            final_state = parse_observation(final_obs, player_override=0)
+            phi = state_potential(final_state, player=0)
             if phi > 0:
                 wins += 1
 
