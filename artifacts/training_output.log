@@ -1,0 +1,393 @@
+OpenSpiel exception: Unknown game 'universal_poker'. Available games are:
+2048
+add_noise
+amazons
+amazons_proxy
+antichess
+backgammon
+banqi
+bargaining
+battleship
+blackjack
+blotto
+breakthrough
+bridge
+bridge_uncontested_bidding
+cached_tree
+catch
+chat_game
+checkers
+chess
+chinese_checkers
+cliff_walking
+clobber
+clobber_proxy
+coin_game
+coin_game_proxy
+colored_trails
+connect_four
+connect_four_proxy
+coop_box_pushing
+coop_to_1p
+coordinated_mp
+crazy_eights
+crazyhouse
+cribbage
+cursor_go
+dark_chess
+dark_hex
+dark_hex_ir
+dark_hex_proxy
+deep_sea
+dots_and_boxes
+dou_dizhu
+efg_game
+einstein_wurfelt_nicht
+euchre
+first_sealed_auction
+gin_rummy
+gin_rummy_proxy
+go
+go_proxy
+gomoku
+goofspiel
+havannah
+hearts
+hex
+hive
+kriegspiel
+kuhn_poker
+laser_tag
+latent_ttt
+leduc_poker
+lewis_signaling
+liars_dice
+liars_dice_ir
+lines_of_action
+lines_of_action_proxy
+maedn
+mancala
+markov_soccer
+matching_pennies_3p
+matrix_bos
+matrix_brps
+matrix_cd
+matrix_coordination
+matrix_mp
+matrix_pd
+matrix_rps
+matrix_rpsw
+matrix_sh
+matrix_shapleys_game
+mfg_crowd_modelling
+mfg_crowd_modelling_2d
+mfg_dynamic_routing
+mfg_garnet
+misere
+mnk
+morpion_solitaire
+negotiation
+nfg_game
+nim
+nine_mens_morris
+normal_form_extensive_game
+oh_hell
+oshi_zumo
+oshi_zumo_proxy
+othello
+oware
+pathfinding
+pentago
+phantom_go
+phantom_ttt
+phantom_ttt_ir
+pig
+python_ant_foraging
+python_block_dominoes
+python_dynamic_routing
+python_hangman
+python_iterated_prisoners_dilemma
+python_kuhn_poker
+python_liars_poker
+python_pokerkit_wrapper
+python_pokerkit_wrapper_acpc_style
+python_repeated_pokerkit
+python_team_dominoes
+python_tic_tac_toe
+quoridor
+rbc
+repeated_game
+repeated_leduc_poker
+restricted_nash_response
+sheriff
+shogi
+skat
+snake
+solitaire
+spades
+start_at
+stones_and_gems
+tarok
+tic_tac_toe
+tiny_bridge_2p
+tiny_bridge_4p
+tiny_hanabi
+trade_comm
+turn_based_simultaneous_game
+twixt
+ultimate_tic_tac_toe
+xiangqi
+y
+y_proxy
+yacht
+zerosum
+OpenSpiel exception: Unknown game 'repeated_poker'. Available games are:
+2048
+add_noise
+amazons
+amazons_proxy
+antichess
+backgammon
+banqi
+bargaining
+battleship
+blackjack
+blotto
+breakthrough
+bridge
+bridge_uncontested_bidding
+cached_tree
+catch
+chat_game
+checkers
+chess
+chinese_checkers
+cliff_walking
+clobber
+clobber_proxy
+coin_game
+coin_game_proxy
+colored_trails
+connect_four
+connect_four_proxy
+coop_box_pushing
+coop_to_1p
+coordinated_mp
+crazy_eights
+crazyhouse
+cribbage
+cursor_go
+dark_chess
+dark_hex
+dark_hex_ir
+dark_hex_proxy
+deep_sea
+dots_and_boxes
+dou_dizhu
+efg_game
+einstein_wurfelt_nicht
+euchre
+first_sealed_auction
+gin_rummy
+gin_rummy_proxy
+go
+go_proxy
+gomoku
+goofspiel
+havannah
+hearts
+hex
+hive
+kriegspiel
+kuhn_poker
+laser_tag
+latent_ttt
+leduc_poker
+lewis_signaling
+liars_dice
+liars_dice_ir
+lines_of_action
+lines_of_action_proxy
+maedn
+mancala
+markov_soccer
+matching_pennies_3p
+matrix_bos
+matrix_brps
+matrix_cd
+matrix_coordination
+matrix_mp
+matrix_pd
+matrix_rps
+matrix_rpsw
+matrix_sh
+matrix_shapleys_game
+mfg_crowd_modelling
+mfg_crowd_modelling_2d
+mfg_dynamic_routing
+mfg_garnet
+misere
+mnk
+morpion_solitaire
+negotiation
+nfg_game
+nim
+nine_mens_morris
+normal_form_extensive_game
+oh_hell
+oshi_zumo
+oshi_zumo_proxy
+othello
+oware
+pathfinding
+pentago
+phantom_go
+phantom_ttt
+phantom_ttt_ir
+pig
+python_ant_foraging
+python_block_dominoes
+python_dynamic_routing
+python_hangman
+python_iterated_prisoners_dilemma
+python_kuhn_poker
+python_liars_poker
+python_pokerkit_wrapper
+python_pokerkit_wrapper_acpc_style
+python_repeated_pokerkit
+python_team_dominoes
+python_tic_tac_toe
+quoridor
+rbc
+repeated_game
+repeated_leduc_poker
+restricted_nash_response
+sheriff
+shogi
+skat
+snake
+solitaire
+spades
+start_at
+stones_and_gems
+tarok
+tic_tac_toe
+tiny_bridge_2p
+tiny_bridge_4p
+tiny_hanabi
+trade_comm
+turn_based_simultaneous_game
+twixt
+ultimate_tic_tac_toe
+xiangqi
+y
+y_proxy
+yacht
+zerosum
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO: Successfully loaded OpenSpiel environments: 21.
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_amazons
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_backgammon
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_checkers
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_chess
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_clobber
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_coin_game
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_connect_four
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_dark_hex
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_gin_rummy
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_go
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_goofspiel
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_hearts
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_hex
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_lines_of_action
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_matching_pennies_3p
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_oshi_zumo
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_othello
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_repeated_game
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_tic_tac_toe
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_y
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    open_spiel_python_repeated_pokerkit
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO: OpenSpiel games skipped: 3.
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    snake
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    universal_poker(betting=nolimit,bettingAbstraction=fullgame,blind=2 1,firstPlayer=2 1 1 1,numBoardCards=0 3 1 1,numHoleCards=2,numPlayers=2,numRanks=13,numRounds=4,numSuits=4,stack=200 200,calcOddsNumSims=1000000)
+[kaggle_environments.envs.open_spiel_env.open_spiel_env] INFO:    repeated_poker(max_num_hands=100,reset_stacks=True,rotate_dealer=True,universal_poker_game_string=universal_poker(betting=nolimit,bettingAbstraction=fullgame,blind=2 1,firstPlayer=2 1 1 1,numBoardCards=0 3 1 1,numHoleCards=2,numPlayers=2,numRanks=13,numRounds=4,numSuits=4,stack=200 200,calcOddsNumSims=1000000))
+配置:
+  [ppo]
+    rollout_steps: 128
+    total_updates: 500
+    epochs: 4
+    minibatch_size: 512
+    gamma: 0.99
+    gae_lambda: 0.95
+    clip_coef: 0.2
+    ent_coef: 0.01
+    vf_coef: 0.5
+    lr: 0.0003
+    max_grad_norm: 0.5
+  [model]
+    hidden_size: 256
+    candidate_count: 20
+  [env]
+    candidate_count: 20
+    episode_steps: 500
+  [opponent]
+    type: random
+
+策略参数量: 218,116
+对手: random
+开始训练: 500 updates, rollout_steps=128, lr=0.0003
+[   10/500] policy_loss=-0.0003 value_loss=3.6103 entropy=2.8230 reward=2.83 elapsed=27s
+[   20/500] policy_loss=0.0007 value_loss=3.9092 entropy=2.8076 reward=5.90 elapsed=56s
+[   30/500] policy_loss=-0.0002 value_loss=2.4160 entropy=2.7960 reward=-4.12 elapsed=80s
+[   40/500] policy_loss=0.0009 value_loss=3.9705 entropy=2.8188 reward=-3.41 elapsed=109s
+[   50/500] policy_loss=0.0037 value_loss=2.8419 entropy=2.8126 reward=-5.14 elapsed=136s
+[   60/500] policy_loss=-0.0003 value_loss=3.6776 entropy=2.8047 reward=-7.40 elapsed=161s
+[   70/500] policy_loss=0.0003 value_loss=5.6007 entropy=2.7967 reward=-5.77 elapsed=189s
+[   80/500] policy_loss=0.0025 value_loss=4.4755 entropy=2.8001 reward=8.53 elapsed=220s
+[   90/500] policy_loss=-0.0026 value_loss=3.0834 entropy=2.8163 reward=-7.54 elapsed=244s
+[  100/500] policy_loss=-0.0000 value_loss=5.4850 entropy=2.8191 reward=-6.20 elapsed=270s
+  checkpoint → checkpoint_100.pt
+[  110/500] policy_loss=-0.0018 value_loss=4.2510 entropy=2.8037 reward=1.70 elapsed=296s
+[  120/500] policy_loss=-0.0033 value_loss=3.7606 entropy=2.7740 reward=-5.79 elapsed=322s
+[  130/500] policy_loss=-0.0103 value_loss=5.6311 entropy=2.7990 reward=8.21 elapsed=366s
+[  140/500] policy_loss=-0.0006 value_loss=4.2613 entropy=2.7668 reward=-2.72 elapsed=391s
+[  150/500] policy_loss=-0.0006 value_loss=4.9986 entropy=2.6970 reward=-12.02 elapsed=443s
+[  160/500] policy_loss=-0.0003 value_loss=4.1159 entropy=2.7386 reward=4.14 elapsed=483s
+[  170/500] policy_loss=-0.0064 value_loss=4.7191 entropy=2.6399 reward=-3.30 elapsed=516s
+[  180/500] policy_loss=-0.0001 value_loss=4.2859 entropy=2.4626 reward=-9.19 elapsed=543s
+[  190/500] policy_loss=-0.0149 value_loss=6.7584 entropy=2.6669 reward=13.89 elapsed=580s
+[  200/500] policy_loss=-0.0028 value_loss=5.0846 entropy=2.6838 reward=0.68 elapsed=613s
+  checkpoint → checkpoint_200.pt
+[  210/500] policy_loss=-0.0002 value_loss=3.4705 entropy=2.7092 reward=-2.67 elapsed=644s
+[  220/500] policy_loss=-0.0003 value_loss=3.6939 entropy=2.7457 reward=-3.26 elapsed=681s
+[  230/500] policy_loss=-0.0004 value_loss=4.1129 entropy=2.7231 reward=1.39 elapsed=718s
+[  240/500] policy_loss=-0.0001 value_loss=4.3161 entropy=2.6755 reward=-8.34 elapsed=750s
+[  250/500] policy_loss=0.0010 value_loss=3.7195 entropy=2.6171 reward=0.86 elapsed=817s
+[  260/500] policy_loss=0.0017 value_loss=6.4212 entropy=2.7025 reward=7.43 elapsed=872s
+[  270/500] policy_loss=0.0000 value_loss=5.2583 entropy=2.7013 reward=-8.28 elapsed=923s
+[  280/500] policy_loss=-0.0006 value_loss=4.7494 entropy=2.7170 reward=1.82 elapsed=964s
+[  290/500] policy_loss=0.0130 value_loss=5.4690 entropy=2.6479 reward=-1.27 elapsed=1003s
+[  300/500] policy_loss=-0.0002 value_loss=3.0932 entropy=2.7469 reward=-3.63 elapsed=1035s
+  checkpoint → checkpoint_300.pt
+[  310/500] policy_loss=-0.0034 value_loss=5.5861 entropy=2.7609 reward=4.78 elapsed=1076s
+[  320/500] policy_loss=0.0175 value_loss=3.6308 entropy=2.7201 reward=-1.90 elapsed=1107s
+[  330/500] policy_loss=-0.0002 value_loss=6.9875 entropy=2.7033 reward=-8.27 elapsed=1138s
+[  340/500] policy_loss=-0.0019 value_loss=7.5126 entropy=2.6969 reward=11.90 elapsed=1173s
+[  350/500] policy_loss=0.0021 value_loss=4.8611 entropy=2.6418 reward=1.57 elapsed=1205s
+[  360/500] policy_loss=-0.0005 value_loss=4.1303 entropy=2.6556 reward=3.55 elapsed=1235s
+[  370/500] policy_loss=-0.0005 value_loss=5.6168 entropy=2.5570 reward=0.40 elapsed=1279s
+[  380/500] policy_loss=0.0042 value_loss=5.2153 entropy=2.6506 reward=3.46 elapsed=1341s
+[  390/500] policy_loss=-0.0002 value_loss=4.0138 entropy=2.6233 reward=6.22 elapsed=1375s
+[  400/500] policy_loss=-0.0035 value_loss=3.2871 entropy=2.5654 reward=5.28 elapsed=1409s
+  checkpoint → checkpoint_400.pt
+[  410/500] policy_loss=-0.0007 value_loss=6.5171 entropy=2.5514 reward=-7.59 elapsed=1473s
+[  420/500] policy_loss=0.0014 value_loss=4.6331 entropy=2.7125 reward=7.38 elapsed=1543s
+[  430/500] policy_loss=-0.0083 value_loss=7.4296 entropy=2.6201 reward=3.84 elapsed=1600s
+[  440/500] policy_loss=0.0020 value_loss=6.1146 entropy=2.5893 reward=-3.10 elapsed=1636s
+[  450/500] policy_loss=-0.0007 value_loss=4.1263 entropy=2.7409 reward=-0.59 elapsed=1658s
+[  460/500] policy_loss=0.0005 value_loss=5.3165 entropy=2.7874 reward=-6.65 elapsed=1682s
+[  470/500] policy_loss=-0.0012 value_loss=5.0754 entropy=2.8067 reward=-2.15 elapsed=1707s
+[  480/500] policy_loss=-0.0025 value_loss=5.5154 entropy=2.6514 reward=0.53 elapsed=1756s
+[  490/500] policy_loss=0.0026 value_loss=4.1120 entropy=2.4763 reward=0.12 elapsed=1835s
+[  500/500] policy_loss=0.0018 value_loss=7.0173 entropy=2.6003 reward=3.82 elapsed=1911s
+  checkpoint → checkpoint_500.pt
+训练完成! 总耗时 1911s

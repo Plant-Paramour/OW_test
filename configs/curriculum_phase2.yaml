@@ -1,0 +1,39 @@
+# 课程学习 Phase 2: 基础对抗
+# 随机 + 狙击手混池，让策略网络学习对抗有目标选择能力的对手
+
+ppo:
+  rollout_steps: 128
+  total_updates: 1000           # 基础对抗 1000 步
+  epochs: 4
+  minibatch_size: 512
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_coef: 0.2
+  ent_coef: 0.01
+  vf_coef: 0.5
+  lr: 0.0003
+  max_grad_norm: 0.5
+
+model:
+  hidden_size: 256
+  candidate_count: 20
+
+env:
+  candidate_count: 20
+  episode_steps: 500
+
+opponent:
+  type: pool
+  pool:
+    - name: random
+      type: random
+      weight: 4.0
+    - name: sniper
+      type: sniper
+      weight: 6.0
+
+# Phase 2: 减弱搜索引导，让策略逐步自主决策
+search:
+  alpha: 0.03
+  alpha_decay: 0.999
+  alpha_min: 0.003

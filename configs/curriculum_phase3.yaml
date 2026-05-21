@@ -1,0 +1,37 @@
+# 课程学习 Phase 3: 战术对抗
+# 狙击手 + 启发式对手，让策略网络学习对抗完整战术推理的对手
+
+ppo:
+  rollout_steps: 128
+  total_updates: 1500           # 战术对抗 1500 步
+  epochs: 4
+  minibatch_size: 512
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_coef: 0.2
+  ent_coef: 0.01
+  vf_coef: 0.5
+  lr: 0.0002                   # 降低学习率以精细调优
+  max_grad_norm: 0.5
+
+model:
+  hidden_size: 256
+  candidate_count: 20
+
+env:
+  candidate_count: 20
+  episode_steps: 500
+
+opponent:
+  type: pool
+  pool:
+    - name: sniper
+      type: sniper
+      weight: 4.0
+    - name: heuristic
+      type: heuristic
+      weight: 6.0
+
+# Phase 3: 关闭搜索引导，策略应完全自主决策
+search:
+  alpha: 0.0

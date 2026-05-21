@@ -1,0 +1,36 @@
+# Orbit Wars PPO 训练默认配置
+# 命令行可通过 --config 覆盖
+
+ppo:
+  rollout_steps: 128        # 每轮收集的 game steps 数
+  total_updates: 3000       # 总 PPO 更新次数
+  epochs: 4                 # 每批数据训练轮数
+  minibatch_size: 512       # mini-batch 大小
+  gamma: 0.99               # 折扣因子
+  gae_lambda: 0.95          # GAE λ
+  clip_coef: 0.2            # PPO clip 范围 [1-ε, 1+ε]
+  ent_coef: 0.01            # 熵正则系数
+  vf_coef: 0.5              # 价值 loss 系数
+  lr: 0.0003                # Adam 学习率
+  max_grad_norm: 0.5        # 梯度裁剪阈值
+
+model:
+  hidden_size: 256          # 编码器隐藏层维度
+  candidate_count: 20       # 每个源行星的候选目标数
+
+env:
+  candidate_count: 20       # 与 model 保持一致
+  episode_steps: 500        # 1v1 游戏总步数
+
+# 对手配置
+# type 可选: random, sniper, heuristic, pool
+opponent:
+  type: random              # 默认使用内置随机对手
+
+# 动作搜索 Logit Bias 配置
+# alpha > 0 时运行动作搜索，为策略每个候选添加 search_value * alpha 的偏置
+# alpha_decay 每次 update 衰减系数，alpha_min 为下限
+search:
+  alpha: 0.05               # 初始搜索偏置强度 (0=关闭)
+  alpha_decay: 0.999         # 每步衰减 (0.999^1000 ≈ 0.37)
+  alpha_min: 0.005           # 最小偏置强度

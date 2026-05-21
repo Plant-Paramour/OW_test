@@ -1,0 +1,45 @@
+# 课程学习 Phase 0: 早期发育
+# 50 回合截断对局，PV-based 终局奖励
+# 分阶段对手：sniper → v4_hybrid，胜率达标自动晋级
+
+ppo:
+  rollout_steps: 128
+  total_updates: 500            # 早期发育 500 步
+  epochs: 4
+  minibatch_size: 512
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_coef: 0.2
+  ent_coef: 0.01
+  vf_coef: 0.5
+  lr: 0.0003
+  max_grad_norm: 0.5
+
+model:
+  hidden_size: 256
+  candidate_count: 20
+
+env:
+  candidate_count: 20
+  episode_steps: 50             # 截断到 50 回合
+
+# 分阶段对手：从弱到强，胜率 ≥ 90% 自动晋级
+opponent:
+  type: staged
+  stages:
+    - type: sniper
+    - type: v4_hybrid
+  eval_interval: 50            # 每 50 次 PPO update 评估一次
+  eval_games: 100              # 每次评估 100 局
+  win_threshold: 0.90          # 胜率达标线
+
+# Phase 0: 强搜索引导，帮助探索高效率扩张动作
+search:
+  alpha: 0.15
+  alpha_decay: 0.999
+  alpha_min: 0.01
+
+# 终局 Φ 奖励：谁的前期发育更好？
+# terminal_bonus = clip(scale × Φ, ±15)
+terminal:
+  early_terminal_scale: 3.0

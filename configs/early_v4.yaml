@@ -1,0 +1,24 @@
+# 早期对局 PPO 训练配置 —— 50 回合短对局，快速学习开局策略
+ppo:
+  rollout_steps: 128
+  total_updates: 1000
+  epochs: 4
+  minibatch_size: 512
+  gamma: 0.97         # 稍低折扣率，聚焦短期收益
+  gae_lambda: 0.95
+  clip_coef: 0.2
+  ent_coef: 0.01
+  vf_coef: 0.5
+  lr: 0.0001          # 低学习率（BC 权重已经较好）
+  max_grad_norm: 0.5
+
+model:
+  hidden_size: 256
+  candidate_count: 20
+
+env:
+  candidate_count: 20
+  episode_steps: 50    # 短对局！聚焦前50回合
+
+opponent:
+  type: v4_hybrid      # 直接在 v4_hybrid 身上练

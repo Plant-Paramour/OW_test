@@ -1,0 +1,32 @@
+# 课程学习 Phase 1: 热身阶段
+# 纯随机对手，让策略网络建立基本的行星占领和舰船发射行为
+
+ppo:
+  rollout_steps: 128
+  total_updates: 500            # 热身 500 步
+  epochs: 4
+  minibatch_size: 512
+  gamma: 0.99
+  gae_lambda: 0.95
+  clip_coef: 0.2
+  ent_coef: 0.01
+  vf_coef: 0.5
+  lr: 0.0003
+  max_grad_norm: 0.5
+
+model:
+  hidden_size: 256
+  candidate_count: 20
+
+env:
+  candidate_count: 20
+  episode_steps: 500
+
+opponent:
+  type: random
+
+# Phase 1: 强搜索引导，帮助策略建立基本的价值判断
+search:
+  alpha: 0.08
+  alpha_decay: 0.999
+  alpha_min: 0.01
